@@ -5,6 +5,11 @@ link to download apk
 <hr>
 
 <style>
+  a {
+  color: #18d26e;
+  text-decoration: none;
+}
+
   button{
   background: red;
   color:white;
