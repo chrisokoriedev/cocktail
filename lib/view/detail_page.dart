@@ -39,7 +39,7 @@ class _DetailScreenState extends State<DetailScreen> {
                         children: [
                           CachedNetworkImage(
                             width: double.infinity,
-                            height: size.height * 0.4 + 20,
+                            height: size.height * 0.5,
                             fit: BoxFit.fill,
                             imageUrl:
                                 controller.drinkList.value.drinks.strDrinkThumb,
@@ -64,7 +64,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             bottom: 0,
                             child: Container(
                               width: size.width,
-                              height: size.height * 0.6,
+                              height: size.height * 0.5,
                               decoration: BoxDecoration(
                                 color: kBackgroundColors,
                                 borderRadius: const BorderRadius.only(
@@ -210,39 +210,6 @@ class _DetailScreenState extends State<DetailScreen> {
                               ),
                             ),
                           ),
-                          Positioned(
-                            top: 280,
-                            right: 20,
-                            child: Container(
-                              width: 80,
-                              height: 180,
-                              padding: const EdgeInsets.symmetric(vertical: 20),
-                              decoration: BoxDecoration(
-                                  color: kBackgroundColorII,
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const CircleAvatar(
-                                      child: Icon(
-                                        FontAwesomeIcons.plus,
-                                        size: 15,
-                                      ),
-                                    ),
-                                    CircleAvatar(
-                                        backgroundColor:
-                                            kBackgroundColors.withOpacity(0.5),
-                                        child: const Text('1')),
-                                    const CircleAvatar(
-                                      child: Icon(
-                                        FontAwesomeIcons.minus,
-                                        size: 15,
-                                      ),
-                                    )
-                                  ]),
-                            ),
-                          ),
                         ],
                       ),
                     ),
@@ -275,15 +242,15 @@ class IngredientCompo extends StatelessWidget {
             ingredient,
             textAlign: TextAlign.justify,
             style: const TextStyle(
-                fontSize: 14, fontWeight: FontWeight.w100, letterSpacing: 1.2),
+                fontSize: 18, fontWeight: FontWeight.w600, letterSpacing: 1.2),
           ),
           Text(
             measurement,
             textAlign: TextAlign.justify,
             style: const TextStyle(
-                color: Colors.white60,
-                fontSize: 14,
-                fontWeight: FontWeight.w100,
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
                 letterSpacing: 1.2),
           ),
         ],
