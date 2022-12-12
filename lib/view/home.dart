@@ -37,7 +37,6 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
     return Scaffold(
       backgroundColor: kBackgroundColors,
       body: SingleChildScrollView(
-
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -186,7 +185,7 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                                                     child: Icon(Icons.warning)),
                                           ),
                                           Container(
-                                            width: 380,
+                                            width: 400,
                                             height: 400,
                                             color:
                                                 Colors.black.withOpacity(0.1),

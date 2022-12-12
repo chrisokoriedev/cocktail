@@ -64,7 +64,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             bottom: 0,
                             child: Container(
                               width: size.width,
-                              height: size.height * 0.5,
+                              height: size.height * 0.6,
                               decoration: BoxDecoration(
                                 color: kBackgroundColors,
                                 borderRadius: const BorderRadius.only(
@@ -72,142 +72,145 @@ class _DetailScreenState extends State<DetailScreen> {
                                   topLeft: Radius.circular(20),
                                 ),
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 40, left: 20, right: 20),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      controller
-                                          .drinkList.value.drinks.strDrink,
-                                      style: const TextStyle(
-                                          fontSize: 24,
-                                          fontWeight: FontWeight.w600,
-                                          letterSpacing: 1.2),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      controller
-                                          .drinkList.value.drinks.strCategory,
-                                      style: const TextStyle(
-                                          color: Colors.white60,
-                                          fontSize: 14,
-                                          letterSpacing: 1.2),
-                                    ),
-                                    const SizedBox(
-                                      height: 20,
-                                    ),
-                                    const Text(
-                                      'Instructions',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w600,
-                                          letterSpacing: 1.2),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      controller.drinkList.value.drinks
-                                              .strInstructions.isEmpty
-                                          ? "Instruction Isn't Available"
-                                          : controller.drinkList.value.drinks
-                                              .strInstructions,
-                                      textAlign: TextAlign.justify,
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.w100,
-                                          letterSpacing: 1.2),
-                                    ),
-                                    const SizedBox(
-                                      height: 20,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: const [
-                                        Text(
-                                          'Ingredient',
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w600,
-                                              letterSpacing: 1.2),
-                                        ),
-                                        Text(
-                                          'Measurement',
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w600,
-                                              letterSpacing: 1.2),
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Column(
-                                      children: [
-                                        IngredientCompo(
-                                          measurement: controller.drinkList
-                                              .value.drinks.strMeasure1,
-                                          ingredient: controller.drinkList.value
-                                              .drinks.strIngredient1,
-                                        ),
-                                        IngredientCompo(
-                                          measurement: controller.drinkList
-                                              .value.drinks.strMeasure2,
-                                          ingredient: controller.drinkList.value
-                                              .drinks.strIngredient2,
-                                        ),
-                                        IngredientCompo(
-                                          measurement: controller.drinkList
-                                              .value.drinks.strMeasure3,
-                                          ingredient: controller.drinkList.value
-                                              .drinks.strIngredient3,
-                                        ),
-                                        IngredientCompo(
-                                          measurement: controller.drinkList
-                                              .value.drinks.strMeasure4,
-                                          ingredient: controller.drinkList.value
-                                              .drinks.strIngredient4,
-                                        ),
-                                        IngredientCompo(
-                                          measurement: controller.drinkList
-                                              .value.drinks.strMeasure5,
-                                          ingredient: controller.drinkList.value
-                                              .drinks.strIngredient5,
-                                        ),
-                                        IngredientCompo(
-                                          measurement: controller.drinkList
-                                              .value.drinks.strMeasure6,
-                                          ingredient: controller.drinkList.value
-                                              .drinks.strIngredient6,
-                                        ),
-                                        IngredientCompo(
-                                          measurement: controller.drinkList
-                                              .value.drinks.strMeasure7,
-                                          ingredient: controller.drinkList.value
-                                              .drinks.strIngredient7,
-                                        ),
-                                        IngredientCompo(
-                                          measurement: controller.drinkList
-                                              .value.drinks.strMeasure8,
-                                          ingredient: controller.drinkList.value
-                                              .drinks.strIngredient8,
-                                        ),
-                                        IngredientCompo(
-                                          measurement: controller.drinkList
-                                              .value.drinks.strMeasure9,
-                                          ingredient: controller.drinkList.value
-                                              .drinks.strIngredient9,
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                              child: ListView(children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 40, left: 20, right: 20),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        controller
+                                            .drinkList.value.drinks.strDrink,
+                                        style: const TextStyle(
+                                            fontSize: 24,
+                                            fontWeight: FontWeight.w600,
+                                            letterSpacing: 1.2),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text(
+                                        controller
+                                            .drinkList.value.drinks.strCategory,
+                                        style: const TextStyle(
+                                            color: Colors.white60,
+                                            fontSize: 14,
+                                            letterSpacing: 1.2),
+                                      ),
+                                      const SizedBox(
+                                        height: 20,
+                                      ),
+                                      const Text(
+                                        'Instructions',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w600,
+                                            letterSpacing: 1.2),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text(
+                                        controller.drinkList.value.drinks
+                                                .strInstructions.isEmpty
+                                            ? "Instruction Isn't Available"
+                                            : controller.drinkList.value.drinks
+                                                .strInstructions,
+                                        textAlign: TextAlign.justify,
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            letterSpacing: 1.2),
+                                      ),
+                                      const SizedBox(
+                                        height: 20,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: const [
+                                          Text(
+                                            'Ingredient',
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w600,
+                                                letterSpacing: 1.2),
+                                          ),
+                                          Text(
+                                            'Measurement',
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w600,
+                                                letterSpacing: 1.2),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Column(
+                                        children: [
+                                          IngredientCompo(
+                                            measurement: controller.drinkList
+                                                .value.drinks.strMeasure1,
+                                            ingredient: controller.drinkList
+                                                .value.drinks.strIngredient1,
+                                          ),
+                                          IngredientCompo(
+                                            measurement: controller.drinkList
+                                                .value.drinks.strMeasure2,
+                                            ingredient: controller.drinkList
+                                                .value.drinks.strIngredient2,
+                                          ),
+                                          IngredientCompo(
+                                            measurement: controller.drinkList
+                                                .value.drinks.strMeasure3,
+                                            ingredient: controller.drinkList
+                                                .value.drinks.strIngredient3,
+                                          ),
+                                          IngredientCompo(
+                                            measurement: controller.drinkList
+                                                .value.drinks.strMeasure4,
+                                            ingredient: controller.drinkList
+                                                .value.drinks.strIngredient4,
+                                          ),
+                                          IngredientCompo(
+                                            measurement: controller.drinkList
+                                                .value.drinks.strMeasure5,
+                                            ingredient: controller.drinkList
+                                                .value.drinks.strIngredient5,
+                                          ),
+                                          IngredientCompo(
+                                            measurement: controller.drinkList
+                                                .value.drinks.strMeasure6,
+                                            ingredient: controller.drinkList
+                                                .value.drinks.strIngredient6,
+                                          ),
+                                          IngredientCompo(
+                                            measurement: controller.drinkList
+                                                .value.drinks.strMeasure7,
+                                            ingredient: controller.drinkList
+                                                .value.drinks.strIngredient7,
+                                          ),
+                                          IngredientCompo(
+                                            measurement: controller.drinkList
+                                                .value.drinks.strMeasure8,
+                                            ingredient: controller.drinkList
+                                                .value.drinks.strIngredient8,
+                                          ),
+                                          IngredientCompo(
+                                            measurement: controller.drinkList
+                                                .value.drinks.strMeasure9,
+                                            ingredient: controller.drinkList
+                                                .value.drinks.strIngredient9,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
+                              ]),
                             ),
                           ),
                         ],

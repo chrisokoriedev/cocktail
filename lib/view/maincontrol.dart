@@ -48,7 +48,7 @@ class _MainControlState extends State<MainControl> {
         ),
       ),
       bottomNavigationBar: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         color: kBackgroundColorII,
         child: BottomNavyBar(
           backgroundColor: kBackgroundColorII,
