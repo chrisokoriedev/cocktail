@@ -16,10 +16,6 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
-  final CockTailController controller = Get.put(CockTailController());
-  final CockTailControllerII controllerII = Get.put(CockTailControllerII());
-  final AlcoholicController alcoholicController =
-      Get.put(AlcoholicController());
   late TabController tabController;
 
   @override
@@ -42,8 +38,7 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(
-                    top: 50, left: 20, bottom: 30, right: 20),
+                padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -131,164 +126,149 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                 ],
               ),
               SizedBox(
-                height: 400,
+                height: Get.mediaQuery.size.height * 0.4 + 50,
                 child: TabBarView(
                   controller: tabController,
                   children: [
-                    SizedBox(
-                      height: 400,
-                      child: Obx(() {
-                        if (controller.isLoading.value) {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        } else if (controller.drinkList.value.drinks.isEmpty) {
-                          return const Center(
-                              child: Text('No Drink is available'));
-                        } else {
-                          return ListView.builder(
-                            physics: const BouncingScrollPhysics(),
-                            itemCount: controller.drinkList.value.drinks.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (BuildContext context, int index) {
-                              final connect =
-                                  controller.drinkList.value.drinks[index];
-                              return GestureDetector(
-                                onTap: () {
-                                  box.put(
-                                      'value',
-                                      controller.drinkList.value.drinks[index]
-                                          .strDrink);
-                                  Get.to(const DetailScreen());
-                                },
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: Stack(
-                                        children: [
-                                          CachedNetworkImage(
-                                            filterQuality: FilterQuality.high,
-                                            fit: BoxFit.fill,
-                                            imageUrl: connect.strDrinkThumb,
-                                            placeholder: (context, url) =>
-                                                const Center(
-                                                    child:
-                                                        CircularProgressIndicator()),
-                                            errorWidget: (context, url,
-                                                    error) =>
-                                                const Center(
-                                                    child: Icon(Icons.warning)),
-                                          ),
-                                          Container(
-                                            width: 400,
-                                            height: 400,
-                                            color:
-                                                Colors.black.withOpacity(0.1),
-                                          ),
-                                          Positioned(
-                                              left: 15,
-                                              bottom: 15,
-                                              child: Text(
-                                                connect.strDrink,
-                                                style: const TextStyle(
-                                                    fontSize: 20,
-                                                    letterSpacing: 1.2),
-                                              ))
-                                        ],
-                                      ),
+                    Obx(() {
+                      if (controller.isLoading.value) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else if (controller.drinkList.value.drinks.isEmpty) {
+                        return const Center(
+                            child: Text('No Drink is available'));
+                      } else {
+                        return ListView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: controller.drinkList.value.drinks.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (BuildContext context, int index) {
+                            final connect =
+                                controller.drinkList.value.drinks[index];
+                            return GestureDetector(
+                              onTap: () {
+                                Get.to(const DetailScreen());
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: Stack(
+                                      children: [
+                                        CachedNetworkImage(
+                                          width: 390,
+                                          color: Colors.black.withOpacity(0.4),
+                                          colorBlendMode: BlendMode.darken,
+                                          filterQuality: FilterQuality.high,
+                                          fit: BoxFit.fill,
+                                          imageUrl: connect.strDrinkThumb,
+                                          placeholder: (context, url) =>
+                                              const Center(
+                                                  child:
+                                                      CircularProgressIndicator()),
+                                          errorWidget: (context, url, error) =>
+                                              const Center(
+                                                  child: Icon(Icons.warning)),
+                                        ),
+                                        Container(
+                                          width: 390,
+                                          height: 400,
+                                          color: Colors.black.withOpacity(0.1),
+                                        ),
+                                        Positioned(
+                                            left: 15,
+                                            bottom: 15,
+                                            child: Text(
+                                              connect.strDrink,
+                                              style: const TextStyle(
+                                                  fontSize: 20,
+                                                  letterSpacing: 1.2),
+                                            ))
+                                      ],
                                     ),
                                   ),
                                 ),
-                              );
-                            },
-                          );
-                        }
-                      }),
-                    ),
-                    SizedBox(
-                      height: 380,
-                      child: Obx(() {
-                        if (controllerII.isLoading.value) {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        } else if (controllerII
-                            .drinkList.value.drinks.isEmpty) {
-                          return const Center(
-                              child: Text('No Drink is available'));
-                        } else {
-                          return ListView.builder(
-                            physics: const BouncingScrollPhysics(),
-                            itemCount:
-                                controllerII.drinkList.value.drinks.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (BuildContext context, int index) {
-                              final connect =
-                                  controllerII.drinkList.value.drinks[index];
-                              return GestureDetector(
-                                onTap: () {
-                                  box.put(
-                                      'value',
-                                      controllerII.drinkList.value.drinks[index]
-                                          .strDrink);
-                                  Get.to(const DetailScreen());
-                                },
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20),
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: Stack(
-                                        children: [
-                                          CachedNetworkImage(
-                                            filterQuality: FilterQuality.high,
-                                            fit: BoxFit.fill,
-                                            imageUrl: connect.strDrinkThumb,
-                                            placeholder: (context, url) =>
-                                                const Center(
-                                                    child:
-                                                        CircularProgressIndicator()),
-                                            errorWidget: (context, url,
-                                                    error) =>
-                                                const Center(
-                                                    child: Icon(Icons.warning)),
-                                          ),
-                                          Container(
-                                            width: 360,
-                                            height: 400,
-                                            color:
-                                                Colors.black.withOpacity(0.5),
-                                          ),
-                                          Positioned(
-                                              left: 15,
-                                              bottom: 15,
-                                              child: Text(
-                                                connect.strDrink,
-                                                style: const TextStyle(
-                                                    fontSize: 20,
-                                                    letterSpacing: 1.2),
-                                              ))
-                                        ],
-                                      ),
+                              ),
+                            );
+                          },
+                        );
+                      }
+                    }),
+                    Obx(() {
+                      if (controllerII.isLoading.value) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else if (controllerII.drinkList.value.drinks.isEmpty) {
+                        return const Center(
+                            child: Text('No Drink is available'));
+                      } else {
+                        return ListView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: controllerII.drinkList.value.drinks.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (BuildContext context, int index) {
+                            final connect =
+                                controllerII.drinkList.value.drinks[index];
+                            return GestureDetector(
+                              onTap: () {
+                                box.put(
+                                    'value',
+                                    controllerII.drinkList.value.drinks[index]
+                                        .strDrink);
+                                Get.to(const DetailScreen());
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: Stack(
+                                      children: [
+                                        CachedNetworkImage(
+                                          width: 350,
+                                          color: Colors.black.withOpacity(0.4),
+                                          colorBlendMode: BlendMode.darken,
+                                          filterQuality: FilterQuality.high,
+                                          fit: BoxFit.fill,
+                                          imageUrl: connect.strDrinkThumb,
+                                          placeholder: (context, url) =>
+                                              const Center(
+                                                  child:
+                                                      CircularProgressIndicator()),
+                                          errorWidget: (context, url, error) =>
+                                              const Center(
+                                                  child: Icon(Icons.warning)),
+                                        ),
+                                        Positioned(
+                                            left: 15,
+                                            bottom: 15,
+                                            child: Text(
+                                              connect.strDrink,
+                                              style: const TextStyle(
+                                                  fontSize: 20,
+                                                  letterSpacing: 1.2),
+                                            ))
+                                      ],
                                     ),
                                   ),
                                 ),
-                              );
-                            },
-                          );
-                        }
-                      }),
-                    ),
+                              ),
+                            );
+                          },
+                        );
+                      }
+                    }),
                     SizedBox(
-                      height: 380,
+                      height: 340,
                       child: Obx(() {
                         if (alcoholicController.isLoading.value) {
                           return const Center(
@@ -326,8 +306,12 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                                       child: Stack(
                                         children: [
                                           CachedNetworkImage(
+                                            color:
+                                                Colors.black.withOpacity(0.4),
+                                            colorBlendMode: BlendMode.darken,
                                             filterQuality: FilterQuality.high,
                                             fit: BoxFit.fill,
+                                            width: 350,
                                             imageUrl: connect.strDrinkThumb,
                                             placeholder: (context, url) =>
                                                 const Center(
@@ -337,12 +321,6 @@ class _MyHomeState extends State<MyHome> with TickerProviderStateMixin {
                                                     error) =>
                                                 const Center(
                                                     child: Icon(Icons.warning)),
-                                          ),
-                                          Container(
-                                            width: 360,
-                                            height: 400,
-                                            color:
-                                                Colors.black.withOpacity(0.5),
                                           ),
                                           Positioned(
                                               left: 15,

@@ -9,6 +9,8 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as path;
 
+import 'controller/cock_tail_controller.dart';
+
 var kBackgroundColors = const Color(0xff1e1e2c);
 var kBackgroundColorII = const Color(0xff302e3d);
 var box = Hive.box('myBox');
@@ -20,6 +22,11 @@ Future<void> main() async {
   await Hive.openBox('myBox');
   runApp(const MyApp());
 }
+ final CockTailController controller = Get.put(CockTailController());
+  final CockTailControllerII controllerII = Get.put(CockTailControllerII());
+  final AlcoholicController alcoholicController =
+      Get.put(AlcoholicController());
+
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
